@@ -11,3 +11,5 @@ RUN find ./target -type f -name "${PROJECT}-*-with-dependencies.jar" | xargs -I 
 
 FROM openjdk:8u171-jdk-slim-stretch
 COPY --from=build /app.jar /
+ENTRYPOINT ["java","-cp","/app.jar","com.my.app.Main"]
+CMD ["-l","512","--pattern","2"]
